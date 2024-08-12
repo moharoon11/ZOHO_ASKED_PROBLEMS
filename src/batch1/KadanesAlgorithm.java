@@ -20,7 +20,8 @@ public class KadanesAlgorithm {
         return max;
     }
 
-    // OPTIMAL APPROACH
+    /********************** OPTIMAL APPROACH *****************************/
+    // Kadane's algorithm
     // TIME COMPLEXITY: O(N)
     // SPACE COMPLEXITY: O(1)
     long maximumSubarraySum(int[] arr) {
