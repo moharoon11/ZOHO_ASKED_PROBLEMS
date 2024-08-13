@@ -47,7 +47,7 @@ public class KeyPair {
       TIME COMPLEXITY: O(n)
       SPACE COMPLEXITY: O(n)
      */
-    boolean hasArrayTwoCandidatesUsingHashSet(int arr[], int x) {\
+    boolean hasArrayTwoCandidatesUsingHashSet(int arr[], int x) {
         Set<Integer> set = new HashSet<>();
 
         for(int num:arr) {
