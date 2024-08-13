@@ -23,7 +23,7 @@ public class KeyPair {
 
     /*********** BETTER APPROACH *********************/
     /*
-      Time Complexity: OO(n log n)
+      Time Complexity: O(n log n)
        Space Complexity: O(1)
      */
     boolean hasArrayTwoCandidatesTwoPointer(int arr[], int x) {
