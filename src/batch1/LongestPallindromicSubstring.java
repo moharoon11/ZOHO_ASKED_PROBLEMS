@@ -1,5 +1,6 @@
 package batch1;
 
+// the second approach is not working in gfg but the exact solution working in leetcode
 public class LongestPallindromicSubstring {
 
     /**
