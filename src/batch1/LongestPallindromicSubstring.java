@@ -4,41 +4,81 @@ public class LongestPallindromicSubstring {
 
     /**
      * brute approach
-     * TIME COMPLEXITY: O(n^2)
+     * TIME COMPLEXITY: O(n^3)
      * SPACE COMPLEXITY: O(1)
      */
-    static String longestPalin(String s){
+    public String longestPalindrome(String s) {
 
-        int max = Integer.MIN_VALUE;
-        String lpal = "";
+        if(s == null || s.length() == 1) return s;
+
+        String maxStr = s.substring(0,1);
+        int maxLen = 1;
+
         for(int i=0; i<s.length(); i++) {
-            for(int j=i; j<s.length(); j++) {
-                String word = s.substring(i, j+1);
-                if(isPalindrome(word)) {
-                    if(word.length() > max) {
-                        max = word.length();
-                        lpal = word;
-                    }
+            for(int j=i + maxLen; j<s.length(); j++) {
+                if(j - i + 1> maxLen && isPallindrome(s, i, j)) {
+                    maxLen = j - i + 1;
+                    maxStr = s.substring(i, j+1);
                 }
             }
         }
 
-
-        return lpal;
+        return maxStr;
     }
 
-    public static boolean isPalindrome(String word) {
-        int left = 0;
-        int right = word.length() - 1;
 
-        while(left <= right) {
-            if(word.charAt(left++) != word.charAt(right--)) {
+
+    public boolean isPallindrome(String s, int start, int end) {
+
+        while(start <= end) {
+            if(s.charAt(start) != s.charAt(end)) {
                 return false;
             }
+            start++;
+            end--;
         }
 
         return true;
     }
+
+
+    // another approach
+    // Time Complexity: O(n ^ 2)
+    // Space Complexity: O(1)
+    public String longestPalindrome1(String s) {
+
+        if (s == null || s.length() < 1) return "";
+
+        int start = 0;
+        int end = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            // Check for odd-length palindromes (single character center)
+            int len1 = expandAroundMiddle(s, i, i);
+            // Check for even-length palindromes (between two characters)
+            int len2 = expandAroundMiddle(s, i, i + 1);
+            int len = Math.max(len1, len2);
+
+            // Update the start and end indices if a longer palindrome is found
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+
+        return s.substring(start, end + 1);
+    }
+
+
+    static int expandAroundMiddle(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        // Length of the palindrome is (right - left - 1)
+        return right - left - 1;
+    }
+
 
 
 
