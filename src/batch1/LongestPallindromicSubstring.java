@@ -41,5 +41,5 @@ public class LongestPallindromicSubstring {
     }
 
 
-    /************** OPTIMAL APPROACH USING SLIDING WINDOW TECHNIQUE *****************/
+
 }
